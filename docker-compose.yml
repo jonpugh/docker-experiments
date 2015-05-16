@@ -1,0 +1,17 @@
+web:
+#  build: .
+ # command: php -S 0.0.0.0:8000 -t /code
+  image: drupal
+  ports:
+    - "8000:80"
+  links:
+    - db
+  volumes:
+    - ./src:/var/www/html
+db:
+  image: orchardup/mysql 
+  environment:
+    MYSQL_DATABASE: drupal
+    MYSQL_USER: drupal
+    MYSQL_PASSWORD: drupal
+
